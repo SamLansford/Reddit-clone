@@ -18,21 +18,16 @@ import java.time.Instant;
 @NoArgsConstructor
 @Entity
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long userId;
-
     @NotBlank(message = "Username is required")
-    private String userName;
-
-    @NotBlank(message = "password is required")
+    private String username;
+    @NotBlank(message = "Password is required")
     private String password;
-
     @Email
-    @NotEmpty(message = "email is required")
+    @NotEmpty(message = "Email is required")
     private String email;
-    private Instant createdDate;
-    private boolean enable;
-
+    private Instant created;
+    private boolean enabled;
 }

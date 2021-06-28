@@ -1,18 +1,21 @@
 package com.example.redditclone.model;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
 public class Vote {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long voteId;
     private VoteType voteType;
     @NotNull
@@ -22,5 +25,4 @@ public class Vote {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
-
 }
